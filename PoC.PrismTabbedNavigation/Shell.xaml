@@ -1,0 +1,24 @@
+﻿<Window x:Class="PoC.PrismTabbedNavigation.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://www.codeplex.com/prism"
+        xmlns:local="clr-namespace:PoC.PrismTabbedNavigation"
+        Title="Shell" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="{x:Type TabItem}" x:Key="HeaderStyle">
+            <Setter Property="Header"
+                    Value="{Binding RelativeSource={RelativeSource Self}, 
+                                    Path=Content.DataContext.Title}" />
+        </Style>
+    </Window.Resources>
+    
+    <local:AutoGrid Columns="200,*" Rows="*">
+        <Border BorderThickness="1" BorderBrush="BlueViolet">
+            <ItemsControl x:Name="SidebarRegion"
+                      prism:RegionManager.RegionName="SidebarRegion"/>
+        </Border>
+        <ContentControl Name="MainRegion" 
+                        prism:RegionManager.RegionName="MainRegion"/>
+    </local:AutoGrid>
+
+</Window>
